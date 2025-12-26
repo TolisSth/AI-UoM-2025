@@ -1,30 +1,40 @@
 #include <iostream>
-#include <stack>
 #include <queue>
 #include <unordered_set>
 #include <vector>
 #include <string>
 #include <fstream>
+#include <chrono> 
 
 #include "Algorithms.hpp" 
 
 void runBreadth(long long start, long long target, const std::string& filename) {
+    auto start_time = std::chrono::high_resolution_clock::now();
+
     std::queue<State> q;
     std::unordered_set<long long> visited;
 
     q.push({start, "", 0, 0});
     visited.insert(start);
-
+    
     while (!q.empty()) {
         State current = q.front();
         q.pop();
 
         if (current.value == target) {
+            auto end_time = std::chrono::high_resolution_clock::now();
+            
+            auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(end_time - start_time);
+
             std::ofstream outfile(filename);
             if (outfile.is_open()) {
                 outfile << current.steps << ", " << current.totalCost << std::endl;
                 outfile << current.path;
                 outfile.close();
+                
+                // Εκτύπωση στην οθόνη (όπως ζητάει η εκφώνηση)
+                std::cout << "BFS Found solution in " << duration.count() << " ms" << std::endl;
+                std::cout << "Steps: " << current.steps << ", Total Cost: " << current.totalCost << std::endl;
             }
             return;
         }
@@ -44,4 +54,6 @@ void runBreadth(long long start, long long target, const std::string& filename) 
             }
         }
     }
+    
+    std::cout << "No solution found." << std::endl;
 }
