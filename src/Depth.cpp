@@ -1,3 +1,4 @@
+// Author: Apostolos Chalis <achalis@csd.auth.gr> 
 #include <iostream>
 #include <stack>
 #include <unordered_set>

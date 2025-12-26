@@ -1,3 +1,4 @@
+// Author: Apostolos Chalis <achalis@csd.auth.gr> 
 #ifndef ALGOS_HPP
 #define ALGOS_HPP
 
