@@ -11,6 +11,40 @@ void runDepth(long long start, long long end, const std::string& filename);
 void runAStar(long long start, long long end, const std::string& filename);
 void runBest(long long start, long long end, const std::string& filename);
 
+/* With this I am getting Dijktra's Algorithm not A* but it's still usefull 
+ * if we want to compare the two algorithms
+ *
+inline long long heuristic(long long current, long long target) {
+    if (current == target) return 0;
+    return 0; 
+}
+*/ 
+
+inline long long heuristic(long long current, long long target) {
+    if (current == target) return 0;
+
+    if (current < target) {
+        long long steps = 0;
+        long long temp = current;
+        if (temp == 0) temp = 1; 
+        
+        while (temp < target) {
+            temp *= 2; 
+            steps++;
+        }
+        return steps; 
+    } 
+    else {
+        long long steps = 0;
+        long long temp = current;
+        while (temp > target) {
+            temp /= 2;
+            steps++;
+        }
+        return steps;
+    }
+}
+
 struct State {
     long long value;
     std::string path; 
