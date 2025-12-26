@@ -32,7 +32,6 @@ void runBreadth(long long start, long long target, const std::string& filename) 
                 outfile << current.path;
                 outfile.close();
                 
-                // Εκτύπωση στην οθόνη (όπως ζητάει η εκφώνηση)
                 std::cout << "BFS Found solution in " << duration.count() << " ms" << std::endl;
                 std::cout << "Steps: " << current.steps << ", Total Cost: " << current.totalCost << std::endl;
             }
