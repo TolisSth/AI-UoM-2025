@@ -14,7 +14,7 @@ void runBest(long long start, long long end, const std::string& filename);
 struct State {
     long long value;
     std::string path; 
-    int cost;
+    int totalCost;
     int steps;
 };
 
