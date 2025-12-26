@@ -2,6 +2,7 @@
 #include <fstream> 
 
 #include "ArgParser.hpp"
+#include "Algorithms.hpp"
 
 int main(int argc, char** argv) {
 	std::string algo; 
