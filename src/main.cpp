@@ -4,10 +4,10 @@
 #include "ArgParser.hpp"
 #include "Algorithms.hpp"
 
-int main(int argc, char** argv) {
+int main(long long argc, char** argv) {
 	std::string algo; 
-	int starting_value;
-	int ending_value;
+	long long starting_value;
+	long long ending_value;
 	std::string filename;
 
 	ArgParser args(argc, argv); 

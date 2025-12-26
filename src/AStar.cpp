@@ -1,5 +1,5 @@
 #include <string>
 
-void runAStar(int star, int end, const std::string& filename) {
+void runAStar(long long star, long long end, const std::string& filename) {
     return;
 }

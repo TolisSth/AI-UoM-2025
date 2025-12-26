@@ -4,9 +4,9 @@
 
 class ArgParser {
 public:
-    ArgParser(int argc, char** argv) {
+    ArgParser(long long argc, char** argv) {
         // Store all arguments except the executable name (argv[0])
-        for (int i = 1; i < argc; ++i) {
+        for (long long i = 1; i < argc; ++i) {
             tokens.push_back(std::string(argv[i]));
         }
     }

@@ -1,5 +1,5 @@
 #include <string> 
 
-void runDepth(int star, int end, const std::string& filename) {
+void runDepth(long long star, long long end, const std::string& filename) {
     return;
 }

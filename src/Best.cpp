@@ -1,5 +1,5 @@
 #include <string> 
 
-void runBest(int star, int end, const std::string& filename) {
+void runBest(long long star, long long end, const std::string& filename) {
     return;
 }

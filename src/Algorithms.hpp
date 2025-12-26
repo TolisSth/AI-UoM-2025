@@ -3,34 +3,36 @@
 
 #include <string>
 #include <vector>
+#include <cmath>   
+#include <algorithm>
 
-void runBreadth(int start, int end, const std::string& filename);
-void runDepth(int start, int end, const std::string& filename);
-void runAStar(int start, int end, const std::string& filename);
-void runBest(int start, int end, const std::string& filename);
+void runBreadth(long long start, long long end, const std::string& filename);
+void runDepth(long long start, long long end, const std::string& filename);
+void runAStar(long long start, long long end, const std::string& filename);
+void runBest(long long start, long long end, const std::string& filename);
 
 struct State {
     long long value;
-    string path;
+    std::string path; 
     int cost;
     int steps;
 };
 
 struct Neighbor {
     long long value;
-    string opName;
+    std::string opName; 
     int opCost;
 };
 
-vector<Neighbor> getNeighbors(long long x) {
-    vector<Neighbor> res;
+inline std::vector<Neighbor> getNeighbors(long long x) {
+    std::vector<Neighbor> res;
 
     // 1. Increase
-    if (x + 1 <= 1000000000) 
+    if (x < 1000000000) 
         res.push_back({x + 1, "increase", 2});
 
     // 2. Decrease
-    if (x - 1 >= 0) 
+    if (x > 0) 
         res.push_back({x - 1, "decrease", 2});
 
     // 3. Double
@@ -42,14 +44,15 @@ vector<Neighbor> getNeighbors(long long x) {
         res.push_back({x / 2, "half", (int)(x / 4) + 1});
 
     // 5. Square
-    if (x > 1 && x <= 31622) { // 31622^2 ~ 10^9
+    if (x > 1 && x <= 31622) { 
         long long sq = x * x;
-        res.push_back({sq, "square", (int)((sq - x) / 4) + 1});
+        if (sq <= 1000000000)
+            res.push_back({sq, "square", (int)((sq - x) / 4) + 1});
     }
 
     // 6. Root
     if (x > 1) {
-        long long r = round(sqrt(x));
+        long long r = (long long)std::round(std::sqrt(x));
         if (r * r == x) 
             res.push_back({r, "root", (int)((x - r) / 4) + 1});
     }

@@ -4,7 +4,7 @@
 #include <vector> 
 #include <string> 
 
-void runBreadth(int start, int end, const std::string& filename) {
+void runBreadth(long long start, long long end, const std::string& filename) {
 
 }
 
